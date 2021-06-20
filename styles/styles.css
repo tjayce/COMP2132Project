@@ -25,14 +25,14 @@
     color: white;
     z-index: 1000;
     visibility: hidden;
-    transition: all 0.3s ease-in-out;
+    transition: 0.5s ease-in-out;
 }
 
 #side-bar ul {
     margin-left: 0px;
     margin-right: 30px;
     overflow: hidden;
-    transition: all 0.3s ease-in-out;
+    /*transition: all 2s ease-in-out;*/
 }
 
 ul li {
