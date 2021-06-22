@@ -64,8 +64,7 @@ code {
     margin: 0 auto;
     background-color: #fff;
     min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+    
     
 }
 
@@ -81,16 +80,109 @@ header h1 {
 }
 
 main {
-    padding: 20px;
+    padding: 0px;
 }
 
 footer {
     padding: 20px;
     border-top: 1px dotted #858585;
-    visibility: hidden;
+    visibility: visible;
 }
 
 footer p {
     line-height: 1;
     margin: 0;
+}
+
+#flip {
+    transform: scaleX(-1);
+}
+
+/* --- Grid --- */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-template-areas: 
+        "score1 opponent you score2"
+        "newGame" "rollDice"
+
+}
+
+.score1 {
+    background-color: #225ca8;
+    grid-area: "score1";
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    grid-template-areas: 
+        ""
+        ""
+        ""
+        ""
+}
+
+.score2 {
+    background-color: #225ca8;
+    grid-area: "score2";
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    grid-template-areas: 
+        ""
+        ""
+        ""
+        ""
+}
+
+.opponent {
+    grid-area: "opponent";
+    display: flex;
+    flex-direction: column;
+
+    text-align: center;
+}
+
+.you {
+    grid-area: "you";
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.stickman {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.divider {
+    display: inline-block;
+    width: 10px;
+    height: auto;
+}
+
+.diceplacement {
+    display: flex;
+    justify-content: center;
+    background-color: white;
+}
+
+.diceplacement img:first-child {
+    margin-right: 5px;
+}
+
+#title {
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 50px;
+    padding: 20px 0;
+    margin-bottom: 20px;
+    background-color: rgb(183, 0, 255);
 }

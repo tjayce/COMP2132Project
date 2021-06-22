@@ -1,0 +1,5 @@
+Side Bar
+- initially hidden with visibility but causes the first transition to fail
+- text is squished when transitioning
+- sidebar behaves funny  when i pull up the console, slides up and down
+
