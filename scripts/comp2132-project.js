@@ -1,31 +1,9 @@
-
-/*----------------------------------
-             Side Bar
------------------------------------*/
-
-let toggleStatus = true;
-
-const hamburger = document.getElementById("hamburger")
-const sideBar = document.getElementById("side-bar");
-
-sideBar.style.left = "100%";
-
-hamburger.addEventListener('click', function(){
-    if(toggleStatus === false) {
-        /*sideBar.style.visibility = "visible";*/
-        sideBar.style.left = "100%";
-        toggleStatus = true;
-    } else {
-        sideBar.style.left = "80%";
-        toggleStatus = false;
-    }   
-});
-
-//console.log(toggleStatusOpen);
-
 /*-----------------------------------
              Dice Game
 ------------------------------------*/
+
+/* --- get IDs --- */
+
 const btnNewGame    = document.getElementById("new-game");
 const btnRoll       = document.getElementById("roll-dice");
 
@@ -49,6 +27,8 @@ const popupTie      = document.getElementById("tie");
 const stickman1     = document.getElementById("stickImage1");
 const stickman2     = document.getElementById("stickImage2");
 
+/* --- Dice Class --- */
+
 class Dice {
     constructor(){
 
@@ -65,6 +45,8 @@ const p1d2 = new Dice();
 const p2d1 = new Dice();
 const p2d2 = new Dice();
 
+/* --- Variables --- */
+
 let dice1;
 let dice2;
 let dice3;
@@ -77,6 +59,8 @@ let overallScoreP2 = 0;
 
 let counter = 0;
 let roundLimit = 3;
+
+/* --- Roll Dice--- */
 
 function rollDice(){
     if(counter <= (roundLimit - 1)){
@@ -104,22 +88,10 @@ function rollDice(){
     }
     
     if(counter === 3){
-        //popup
-        popup.style.display = "block";
-        popupWin.style.display = "none";
-        popupLose.style.display = "none";
-        popupTie.style.display = "none";
-        
-        if(overallScoreP1 > overallScoreP2){
-            popupLose.style.display = "block";
-            stickman1.src = `images/stickwin.png`;
-        }else if(overallScoreP1 < overallScoreP2){
-            popupWin.style.display = "block";
-            stickman2.src = `images/stickwin.png`;
-        }else{
-            popupTie.style.display = "block";
-        }
+        popupDisplay();
     }
+
+    hideSideBar();
 }
 
 function calcualteRoundScore(dice01, dice02){
@@ -136,7 +108,8 @@ function calcualteRoundScore(dice01, dice02){
 
 btnRoll.addEventListener('click', rollDice);
 
-//------------
+/* --- Reset Game --- */
+
 function newGame(){
     roundScore1.innerHTML = 0;
     roundScore2.innerHTML = 0;
@@ -157,16 +130,59 @@ function newGame(){
     stickman2.src = `images/stickman.png`;
 
     counter = 0;
+
+    hideSideBar();
 }
 
 btnNewGame.addEventListener('click', function(){
     newGame();
 });
 
-//popup
+
+/* --- Pop Up --- */
+
 popup.style.display = "none";
+
+function popupDisplay(){
+    popup.style.display = "block";
+    popupWin.style.display = "none";
+    popupLose.style.display = "none";
+    popupTie.style.display = "none";
+
+    if(overallScoreP1 > overallScoreP2){
+        popupLose.style.display = "block";
+        stickman1.src = `images/stickwin.png`;
+    }else if(overallScoreP1 < overallScoreP2){
+        popupWin.style.display = "block";
+        stickman2.src = `images/stickwin.png`;
+    }else{
+        popupTie.style.display = "block";
+    }
+}
 
 closePopup.addEventListener("click", function(){
     popup.style.display = "none";
     newGame();
 });
+
+/* --- Side Bar --- */
+
+const hamburger = document.getElementById("hamburger")
+const sideBar = document.getElementById("side-bar");
+
+let toggleStatus = true;
+sideBar.style.left = "100%";
+
+hamburger.addEventListener('click', function(){
+    if(toggleStatus === false) {
+        hideSideBar();
+    } else {
+        sideBar.style.left = "80%";
+        toggleStatus = false;
+    }   
+});
+
+function hideSideBar(){
+    sideBar.style.left = "100%";
+    toggleStatus = true;
+}
