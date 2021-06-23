@@ -41,6 +41,13 @@ const diceImage2    = document.getElementById("diceImage2");
 const diceImage3    = document.getElementById("diceImage3");
 const diceImage4    = document.getElementById("diceImage4");
 
+const popup         = document.getElementById("popup");
+const closePopup    = document.getElementById('btn-close'); 
+
+const popupWin      = document.getElementById("winner");
+const popupLose     = document.getElementById("loser");
+const popupTie      = document.getElementById("tie");
+
 class Dice {
     constructor(){
 
@@ -77,9 +84,8 @@ function rollDice(){
         dice3 = p2d1.roll();
         dice4 = p2d2.roll();
 
-        currentRoundP1 = dice1 + dice2;
-        currentRoundP2 = dice3 + dice4;
-        overallScoreP1 += currentRoundP1;
+        currentRoundP1 = calcualteRoundScore(dice1, dice2);
+        currentRoundP2 = calcualteRoundScore(dice3, dice4);
 
         roundScore1.innerHTML = currentRoundP1;
         totalScore1.innerHTML = overallScoreP1 += currentRoundP1;
@@ -93,9 +99,36 @@ function rollDice(){
         diceImage4.src = `images/dice-${dice4}.png`;
 
         counter++;
-        console.log(counter);
-    } 
+        //console.log(counter);
+    }
     
+    if(counter === 3){
+        //popup
+        popup.style.display = "block";
+        popupWin.style.display = "none";
+        popupLose.style.display = "none";
+        popupTie.style.display = "none";
+        
+        if(overallScoreP1 > overallScoreP2){
+            popupLose.style.display = "block";
+        }else if(overallScoreP1 < overallScoreP2){
+            popupWin.style.display = "block";
+        }else{
+            popupTie.style.display = "block";
+        }
+    }
+}
+
+function calcualteRoundScore(dice01, dice02){
+    let roundScore = 0;
+    if(dice01 === 1 || dice02 === 1){
+        roundScore = 0;
+    } else if(dice01 === dice02){
+        roundScore = (dice01 + dice02)*2;
+    } else {
+        roundScore = dice01 + dice02;
+    }
+    return roundScore;
 }
 
 btnRoll.addEventListener('click', rollDice);
@@ -121,5 +154,13 @@ function newGame(){
 }
 
 btnNewGame.addEventListener('click', function(){
+    newGame();
+});
+
+//popup
+popup.style.display = "none";
+
+closePopup.addEventListener("click", function(){
+    popup.style.display = "none";
     newGame();
 });
