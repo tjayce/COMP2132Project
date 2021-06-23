@@ -3,23 +3,21 @@
              Side Bar
 -----------------------------------*/
 
-let toggleStatusOpen = false;
+let toggleStatus = true;
 
 const hamburger = document.getElementById("hamburger")
 const sideBar = document.getElementById("side-bar");
 
-
-//console.log(toggleStatusOpen);
+sideBar.style.left = "100%";
 
 hamburger.addEventListener('click', function(){
-    
-    if(toggleStatusOpen === false) {
-        sideBar.style.visibility = "visible";
+    if(toggleStatus === false) {
+        /*sideBar.style.visibility = "visible";*/
         sideBar.style.left = "100%";
-        toggleStatusOpen = true;
+        toggleStatus = true;
     } else {
         sideBar.style.left = "80%";
-        toggleStatusOpen = false;
+        toggleStatus = false;
     }   
 });
 
@@ -47,6 +45,9 @@ const closePopup    = document.getElementById('btn-close');
 const popupWin      = document.getElementById("winner");
 const popupLose     = document.getElementById("loser");
 const popupTie      = document.getElementById("tie");
+
+const stickman1     = document.getElementById("stickImage1");
+const stickman2     = document.getElementById("stickImage2");
 
 class Dice {
     constructor(){
@@ -97,7 +98,7 @@ function rollDice(){
         diceImage2.src = `images/dice-${dice2}.png`;
         diceImage3.src = `images/dice-${dice3}.png`;
         diceImage4.src = `images/dice-${dice4}.png`;
-
+ 
         counter++;
         //console.log(counter);
     }
@@ -111,8 +112,10 @@ function rollDice(){
         
         if(overallScoreP1 > overallScoreP2){
             popupLose.style.display = "block";
+            stickman1.src = `images/stickwin.png`;
         }else if(overallScoreP1 < overallScoreP2){
             popupWin.style.display = "block";
+            stickman2.src = `images/stickwin.png`;
         }else{
             popupTie.style.display = "block";
         }
@@ -144,11 +147,14 @@ function newGame(){
     currentRoundP2 = 0;
     overallScoreP1 = 0;
     overallScoreP2 = 0;
-
+    
     diceImage1.src = `images/dice-1.png`;
     diceImage2.src = `images/dice-1.png`;
     diceImage3.src = `images/dice-1.png`;
     diceImage4.src = `images/dice-1.png`;
+
+    stickman1.src = `images/stickman.png`;
+    stickman2.src = `images/stickman.png`;
 
     counter = 0;
 }

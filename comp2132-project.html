@@ -27,47 +27,47 @@
                 <h2>You lose!</h2>
             </div>
             <div id="tie">
-                <h2>It's a tie! Everyone's a winner!</h2>
+                <h2>It's a tie!</h2>
             </div>
         </section>
 
         <div class="grid">
-            <div class="score1">
-                <div>Score this Round:</div>
+            <div id="score1" class="scoreboard">
+                <p>Score this Round:</p>
                 <div id="roundScore1">0</div>
-                <div>Total Score:</div>
+                <p>Total Score:</p>
                 <div id="totalScore1">0</div>
             </div>
 
-            <div class="opponent">
+            <div id="opponent">
                 <div class="diceplacement">
                     <img src="images/dice-1.png" id="diceImage1">
                     <img src="images/dice-1.png" id="diceImage2">
                 </div>
-                <img src="images/stickman.png" id="flip" class="stickman" alt="stickman">
+                <img src="images/stickman.png" id="stickImage1" class="stickman" alt="stickman">
                 <p>Opponent</p>
             </div>
 
-            <div class="you">
+            <div id="you">
                 <div class="diceplacement">
                     <img src="images/dice-1.png" id="diceImage3">
                     <img src="images/dice-1.png" id="diceImage4">
                 </div>
-                <img src="images/stickman.png" class="stickman" alt="stickman">
+                <img src="images/stickman.png" id="stickImage2" class="stickman" alt="stickman">
                 <p>You</p>
             </div>
 
-            <div class="score2">
-                <div>Score this Round:</div>
+            <div id="score2" class="scoreboard">
+                <p>Score this Round:</p>
                 <div id="roundScore2">0</div>
-                <div>Total Score:</div>
+                <p>Total Score:</p>
                 <div id="totalScore2">0</div>
             </div>
         </div>
         <div class="buttons">
-                <button id="new-game">New Game</button>
-                <div class="divider"></div>
-                <button id="roll-dice">Roll Dice</button>
+            <button id="new-game">NEW GAME</button>
+            <div class="divider"></div>
+            <button id="roll-dice">ROLL DICE</button>
         </div>
 
         <button id="hamburger">
