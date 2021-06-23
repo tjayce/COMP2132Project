@@ -188,6 +188,10 @@ footer p {
   padding-top: 5px;
 }
 
+#side-bar-text {
+  opacity: 0;
+}
+
 #hamburger {
   background-color: transparent;
   border: 0;

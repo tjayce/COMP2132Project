@@ -164,22 +164,34 @@ closePopup.addEventListener("click", function(){
 
 /* --- Side Bar --- */
 
-const hamburger = document.getElementById("hamburger")
-const sideBar = document.getElementById("side-bar");
+const hamburger     = document.getElementById("hamburger")
+const sideBar       = document.getElementById("side-bar");
+const sideBarText   = document.getElementById("side-bar-text");
 
-let toggleStatus = true;
-sideBar.style.left = "100%";
+hideSideBar();
 
 hamburger.addEventListener('click', function(){
     if(toggleStatus === false) {
         hideSideBar();
+        //hides text squishing
+        setTimeout(function(){
+            sideBarText.style.display = "none";
+        }, 75);
     } else {
-        sideBar.style.left = "80%";
-        toggleStatus = false;
+        openSideBar();
+        //hides text squishing
+        setTimeout(function(){
+            $("#side-bar-text").fadeTo(1000, 1);
+        }, 250);
     }   
 });
 
 function hideSideBar(){
     sideBar.style.left = "100%";
     toggleStatus = true;
+}
+
+function openSideBar(){
+    sideBar.style.left = "80%";
+    toggleStatus = false;
 }
