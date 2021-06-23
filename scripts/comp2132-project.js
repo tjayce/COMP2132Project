@@ -41,8 +41,6 @@ const diceImage2    = document.getElementById("diceImage2");
 const diceImage3    = document.getElementById("diceImage3");
 const diceImage4    = document.getElementById("diceImage4");
 
-let dice;
-
 class Dice {
     constructor(){
 
@@ -59,28 +57,45 @@ const p1d2 = new Dice();
 const p2d1 = new Dice();
 const p2d2 = new Dice();
 
-let temp1;
-let temp2;
-let temp3;
-let temp4;
+let dice1;
+let dice2;
+let dice3;
+let dice4;
+
+let currentRoundP1 = 0;
+let currentRoundP2 = 0;
+let overallScoreP1 = 0;
+let overallScoreP2 = 0;
+
+let counter = 0;
+let roundLimit = 3;
 
 function rollDice(){
-    temp1 = p1d1.roll();
-    temp2 = p1d2.roll();
-    temp3 = p2d1.roll();
-    temp4 = p2d2.roll();
+    if(counter <= (roundLimit - 1)){
+        dice1 = p1d1.roll();
+        dice2 = p1d2.roll();
+        dice3 = p2d1.roll();
+        dice4 = p2d2.roll();
 
-    diceImage1.src = `images/dice-${temp1}.png`;
-    diceImage2.src = `images/dice-${temp2}.png`;
-    diceImage3.src = `images/dice-${temp3}.png`;
-    diceImage4.src = `images/dice-${temp4}.png`;
+        currentRoundP1 = dice1 + dice2;
+        currentRoundP2 = dice3 + dice4;
+        overallScoreP1 += currentRoundP1;
 
-    roundScore1.innerHTML = temp1;
-    /*
-    roundScore1.innerHTML = p1d1.roll();
-    roundScore2.innerHTML = p1d2.roll();
-    totalScore1.innerHTML = p2d1.roll();
-    totalScore2.innerHTML = p2d2.roll();*/
+        roundScore1.innerHTML = currentRoundP1;
+        totalScore1.innerHTML = overallScoreP1 += currentRoundP1;
+
+        roundScore2.innerHTML = currentRoundP2;
+        totalScore2.innerHTML = overallScoreP2 += currentRoundP2;
+
+        diceImage1.src = `images/dice-${dice1}.png`;
+        diceImage2.src = `images/dice-${dice2}.png`;
+        diceImage3.src = `images/dice-${dice3}.png`;
+        diceImage4.src = `images/dice-${dice4}.png`;
+
+        counter++;
+        console.log(counter);
+    } 
+    
 }
 
 btnRoll.addEventListener('click', rollDice);
@@ -91,6 +106,18 @@ function newGame(){
     roundScore2.innerHTML = 0;
     totalScore1.innerHTML = 0;
     totalScore2.innerHTML = 0;
+
+    currentRoundP1 = 0;
+    currentRoundP2 = 0;
+    overallScoreP1 = 0;
+    overallScoreP2 = 0;
+
+    diceImage1.src = `images/dice-1.png`;
+    diceImage2.src = `images/dice-1.png`;
+    diceImage3.src = `images/dice-1.png`;
+    diceImage4.src = `images/dice-1.png`;
+
+    counter = 0;
 }
 
 btnNewGame.addEventListener('click', function(){
