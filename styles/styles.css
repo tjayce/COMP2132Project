@@ -158,7 +158,6 @@ footer p {
 .scoreboard div {
     font-size: 50px;
     padding: 0 25px;
-
 }
 
 .scoreboard p {
@@ -242,4 +241,40 @@ footer p {
     border-radius: 10px;
     font-weight: bold;
     font-size: 16px;
+}
+
+/*----------------------------------
+             Window Resize
+-----------------------------------*/
+
+@media screen and (max-width: 1350px){
+    .scoreboard {
+        font-size: 20px;
+        font-weight: bold;
+    }
+    
+    .scoreboard div {
+        font-size: 20px;
+        text-align: center;
+    }
+
+    .scoreboard p {
+        text-align: center;
+    }
+
+    #you {
+        font-size: 20px;
+    }
+
+    #opponent {
+        font-size: 20px;
+    }
+
+    .diceplacement img {
+        width: 25%;
+    }
+
+    #score1 {
+        align-items: initial;
+    }
 }
