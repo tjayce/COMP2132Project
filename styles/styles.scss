@@ -1,5 +1,19 @@
 @charset "utf-8";
 
+/* --- Variables --- */
+$primary_colour: #225ca8;
+$secondary_colour: white;
+$sidebar_colour: #1B1B1B;
+$border_colour: black;
+$popup_colour: rgb(87, 97, 187);
+
+@mixin setDisplay($display, $flex-direction, $justify-content, $align-items){
+    display: $display;
+    flex-direction: $flex-direction;
+    justify-content: $justify-content;
+    align-items: $align-items;
+}
+
 body {
     margin: 0;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
@@ -12,13 +26,13 @@ header, footer, main, article, section {
 .wrapper {
     max-width: 100%;
     margin: 0 auto;
-    background-color: #fff;
+    background-color: $secondary_colour;
     min-height: 100vh;
 }
 
 header {
-    background-color: #225ca8;
-    color: white;
+    background-color: $primary_colour;
+    color: $secondary_colour;
     padding: 15px;
 
     h1 {
@@ -33,7 +47,7 @@ main {
 
 footer {
     padding: 20px;
-    border-top: 1px solid black;
+    border-top: 1px solid $border_colour;
     position: fixed;
     bottom: 0;
     width: 100%;
@@ -45,14 +59,13 @@ footer {
 }
 
 #title {
-    display: flex;
-    justify-content: center;
     font-weight: bold;
     font-size: 50px;
     padding: 20px 0;
     margin: 20px 0;
-    /*border-bottom: solid rgb(183, 0, 255);*/
+    /*border-bottom: solid $border_colour;*/
     border-width: 2px;
+    @include setDisplay(flex, row, center, initial);
 }
 
 /* --- Grid --- */
@@ -62,39 +75,31 @@ footer {
     grid-template-areas: 
         "score1 opponent you score2"
         "newGame" "rollDice"
-
 }
 
 #score1 {
     grid-area: "score1";
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: flex-end;
     padding-right: 20px;
-    border-right: solid black;
     border-width: 2px;
     padding-bottom: 50px;
+    border-right: solid $border_colour;
+    @include setDisplay(flex, column, space-around, flex-end);
 }
 
 #score2 {
     grid-area: "score2";
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
     padding-left: 20px;
-    border-left: solid black;
+    border-left: solid $border_colour;
     border-width: 2px;
     padding-bottom: 50px;
+    @include setDisplay(flex, column, space-around, initial);
 }
 
 #opponent {
     grid-area: "opponent";
-    display: flex;
-    flex-direction: column;
-    text-align: center;
     font-weight: bold;
     font-size: 30px;
+    @include setDisplay(flex, column, center, center);
 
     img {
         transform: scaleX(-1);
@@ -103,12 +108,9 @@ footer {
 
 #you {
     grid-area: "you";
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
     font-weight: bold;
     font-size: 30px;
+    @include setDisplay(flex, column, center, center);
 }
 
 .scoreboard {
@@ -147,7 +149,7 @@ footer {
 .diceplacement {
     display: flex;
     justify-content: center;
-    background-color: white;
+    background-color: $secondary_colour;
     margin-bottom: 5px;
 
     img:first-child {
@@ -156,7 +158,7 @@ footer {
 }
 
 .buttons button {
-    background-color: white;
+    background-color: $secondary_colour;
     height: 50px;
     width: 125px;
     border-radius: 10px;
@@ -170,8 +172,8 @@ footer {
     right: 0;
     bottom: 0;
     height: calc(100vh - 60px); 
-    background-color: #1B1B1B;
-    color: white;
+    background-color: $sidebar_colour;
+    color: $secondary_colour;
     z-index: 1000;
     /*visibility: hidden;*/
     transition: 0.5s ease-in-out;
@@ -201,7 +203,7 @@ footer {
 #hamburger {
     background-color: transparent;
     border: 0;
-    color: #fdfdfd;
+    color: $secondary_colour;
     cursor: pointer;
     font-size: 20px;
     position: absolute;
@@ -219,10 +221,10 @@ footer {
     width: 350px;
     height: 120px;
     padding: 10px;
-    background-color: rgb(87, 97, 187);
-    color: white;
-    border: solid 1px black;
-    box-shadow: 0px 0px 5px #225ca8, 5px 5px 5px black;
+    background-color: $popup_colour;
+    color: $secondary_colour;
+    border: solid 1px $border_colour;
+    box-shadow: 0px 0px 5px $primary_colour, 5px 5px 5px $border_colour;
     position: absolute;
     top: 30%;
     left: 50%;
@@ -241,9 +243,11 @@ footer {
     font-weight: bold;
     background-color: inherit;
     color: inherit;
-    border: solid 1.5px black;
+    border: solid 1.5px $border_colour;
     cursor: pointer;
 }
+
+
 
 /* --- Window Resize --- */
 @media screen and (max-width: 1350px){
