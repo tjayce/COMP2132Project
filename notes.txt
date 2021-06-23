@@ -1,5 +1,10 @@
 Side Bar
-- initially hidden with visibility but causes the first transition to fail
 - text is squished when transitioning
-- sidebar behaves funny  when i pull up the console, slides up and down
+- opening console when side bar is open cause the sidebar to side vertically
+
+Footer
+- footer is fixed bottom
+- opening console raises footer
+
+*console docked bottom
 
