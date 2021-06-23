@@ -30,9 +30,7 @@ const stickman2     = document.getElementById("stickImage2");
 /* --- Dice Class --- */
 
 class Dice {
-    constructor(){
-
-    }
+    constructor(){}
 
     roll(){
         return Math.floor(Math.random()*6) +1;
@@ -90,7 +88,6 @@ function rollDice(){
     if(counter === 3){
         popupDisplay();
     }
-
     hideSideBar();
 }
 
