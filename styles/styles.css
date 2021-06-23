@@ -42,7 +42,7 @@ ul li {
 
 body {
     margin: 0;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     background-color: #353535;
 }
 
@@ -72,6 +72,7 @@ header {
     background-color: #225ca8;
     color: white;
     padding: 15px;
+
 }
 
 header h1 {
@@ -109,34 +110,32 @@ footer p {
 }
 
 .score1 {
-    background-color: #225ca8;
+    
     grid-area: "score1";
-    display: grid;
-    grid-template-columns: repeat(2,1fr);
-    grid-template-areas: 
-        ""
-        ""
-        ""
-        ""
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-end;
+    padding-right: 20px;
+    border-right: solid rgb(194, 101, 231);
+    border-width: 2px;
 }
 
 .score2 {
-    background-color: #225ca8;
+    
     grid-area: "score2";
-    display: grid;
-    grid-template-columns: repeat(2,1fr);
-    grid-template-areas: 
-        ""
-        ""
-        ""
-        ""
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding-left: 20px;
+    border-left: solid rgb(194, 101, 231);
+    border-width: 2px;
 }
 
 .opponent {
     grid-area: "opponent";
     display: flex;
     flex-direction: column;
-
     text-align: center;
 }
 
@@ -158,7 +157,7 @@ footer p {
 .buttons {
     display: flex;
     justify-content: center;
-    margin-bottom: 20px;
+    margin: 20px 0;
 }
 
 .divider {
@@ -171,6 +170,7 @@ footer p {
     display: flex;
     justify-content: center;
     background-color: white;
+    margin-bottom: 5px;
 }
 
 .diceplacement img:first-child {
@@ -184,5 +184,6 @@ footer p {
     font-size: 50px;
     padding: 20px 0;
     margin-bottom: 20px;
-    background-color: rgb(183, 0, 255);
+    border-bottom: solid rgb(183, 0, 255);
+    border-width: 2px;
 }

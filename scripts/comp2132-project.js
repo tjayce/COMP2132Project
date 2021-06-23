@@ -15,10 +15,10 @@ hamburger.addEventListener('click', function(){
     
     if(toggleStatusOpen === false) {
         sideBar.style.visibility = "visible";
-        sideBar.style.left = "80%";
+        sideBar.style.left = "100%";
         toggleStatusOpen = true;
     } else {
-        sideBar.style.left = "100%";
+        sideBar.style.left = "80%";
         toggleStatusOpen = false;
     }   
 });
@@ -28,91 +28,71 @@ hamburger.addEventListener('click', function(){
 /*-----------------------------------
              Dice Game
 ------------------------------------*/
-const btnNewGame   = document.getElementById("new-game");
-const btnRoll    = document.getElementById("roll-dice");
+const btnNewGame    = document.getElementById("new-game");
+const btnRoll       = document.getElementById("roll-dice");
 
-const out01 = document.getElementById("dice01");
+const roundScore1   = document.getElementById("roundScore1");
+const roundScore2   = document.getElementById("roundScore2");
+const totalScore1   = document.getElementById("totalScore1");
+const totalScore2   = document.getElementById("totalScore2");
+
+const diceImage1    = document.getElementById("diceImage1");
+const diceImage2    = document.getElementById("diceImage2");
+const diceImage3    = document.getElementById("diceImage3");
+const diceImage4    = document.getElementById("diceImage4");
 
 let dice;
 
 class Dice {
-    constructor(){}
+    constructor(){
+
+    }
 
     roll(){
-        dice = Math.floor(Math.random()*6) +1;
-        return dice;
+        return Math.floor(Math.random()*6) +1;
     }
 }
+
 const p1d1 = new Dice();
 const p1d2 = new Dice();
 
 const p2d1 = new Dice();
 const p2d2 = new Dice();
 
+let temp1;
+let temp2;
+let temp3;
+let temp4;
 
 function rollDice(){
-    p1d1.roll();
-    p1d2.roll();
+    temp1 = p1d1.roll();
+    temp2 = p1d2.roll();
+    temp3 = p2d1.roll();
+    temp4 = p2d2.roll();
 
-    p2d1.roll();
-    p2d2.roll();
+    diceImage1.src = `images/dice-${temp1}.png`;
+    diceImage2.src = `images/dice-${temp2}.png`;
+    diceImage3.src = `images/dice-${temp3}.png`;
+    diceImage4.src = `images/dice-${temp4}.png`;
+
+    roundScore1.innerHTML = temp1;
+    /*
+    roundScore1.innerHTML = p1d1.roll();
+    roundScore2.innerHTML = p1d2.roll();
+    totalScore1.innerHTML = p2d1.roll();
+    totalScore2.innerHTML = p2d2.roll();*/
 }
 
 btnRoll.addEventListener('click', rollDice);
 
-console.log(p1d1.roll());
-console.log(p1d2.roll());
-console.log(p2d1.roll());
-console.log(p2d2.roll());
-
-
-out01.innerHTML = temp1 ;
-
 //------------
 function newGame(){
-    //set everything to 0/default
-    /*
-    dice01.innerHTML = 0;
-    dice02.innerHTML = 0;
-    result.innerHTML = 0;
-    counter = 0;
-    score.innerHTML = 0;
-    */
+    roundScore1.innerHTML = 0;
+    roundScore2.innerHTML = 0;
+    totalScore1.innerHTML = 0;
+    totalScore2.innerHTML = 0;
 }
 
 btnNewGame.addEventListener('click', function(){
     newGame();
 });
-
-
-/* trash
-const out01 = document.getElementById("dice01");
-const dice02 = document.getElementById("dice02");
-const result = document.getElementById("result");
-const score = document.getElementById("score");
-let counter = 0;
-let total = 0;
-
-function rollDice() {
-    const d01 = Math.floor(Math.random()*6) +1;
-    const d02 = Math.floor(Math.random()*6) +1;
-    total = d01 + d02;
-    
-    dice01.innerHTML = d01;
-    dice02.innerHTML = d02;
-
-    result.innerHTML = total;
-    score.innerHTML = counter += total;
-}
-
-
-btnRoll.addEventListener('click', rollDice);
-
-btnNewGame.addEventListener('click', function(){
-    dice01.innerHTML = 0;
-    dice02.innerHTML = 0;
-    result.innerHTML = 0;
-    counter = 0;
-    score.innerHTML = 0;
-});
-*/
