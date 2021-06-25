@@ -27,6 +27,8 @@ const popupTie      = document.getElementById("tie");
 const stickman1     = document.getElementById("stickImage1");
 const stickman2     = document.getElementById("stickImage2");
 
+
+
 /* --- Dice Class --- */
 
 class Dice {
